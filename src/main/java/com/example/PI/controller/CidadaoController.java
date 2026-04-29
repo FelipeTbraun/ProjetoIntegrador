@@ -1,0 +1,51 @@
+package com.example.PI.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.PI.model.Cidadao;
+import com.example.PI.service.CidadaoService;
+
+
+
+
+@RestController
+@RequestMapping("/cidadao")
+public class CidadaoController {
+    
+    @Autowired
+    private CidadaoService service;
+
+    //Cadastro do cidadão
+    @PostMapping("/cadastro")
+    public Cidadao cadastrar(@RequestBody Cidadao cidadao){
+        return service.cadastrar(cidadao);
+    }
+//login
+    @PostMapping("/login")
+    public Cidadao login(@RequestParam String email,
+        @RequestParam String senha){
+           return service.login(email,senha) ;
+        }
+    
+    //listar todos
+    @GetMapping
+   public List<Cidadao> listar(){
+    return service.Listar();
+   }
+    
+   @GetMapping("/{id}")
+   public Cidadao buscar(@PathVariable Long id){
+    return service.buscarPorId(id);
+   }
+    
+
+}

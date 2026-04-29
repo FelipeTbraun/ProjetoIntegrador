@@ -21,4 +21,8 @@ public class FormularioService {
     public List<Formulario> listar(){
         return repository.findAll();
     }
+
+    public Formulario buscarPorId( Long id){
+        return repository.findById(id).orElseThrow(() -> new RuntimeException("Formulario não encontrado"));
+    }
 }
