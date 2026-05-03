@@ -41,4 +41,17 @@ public class CidadaoService {
         }
         return c;
     }
+
+    public Cidadao atualizar(Long id, Cidadao cidadao){
+        cidadao.setId(id);
+        return repository.save(cidadao);
+    }
+
+    public void deletar(Long id){
+        if(!repository.existsById(id)){
+            throw new RuntimeException("Cidadão não encontrado");
+        }
+        repository.deleteById(id);
+    }
+    
 }
