@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.PI.model.Cidadao;
@@ -31,12 +30,8 @@ public class CidadaoController {
     public Cidadao cadastrar(@RequestBody Cidadao cidadao){
         return service.cadastrar(cidadao);
     }
-//login
-    @PostMapping("/login")
-    public Cidadao login(@RequestParam String email,
-        @RequestParam String senha){
-           return service.login(email,senha) ;
-        }
+
+  
     
     //listar todos
     @GetMapping

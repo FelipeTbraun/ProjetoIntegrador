@@ -31,17 +31,6 @@ public class CidadaoService {
         return repository.findById(id)
             .orElseThrow(() -> new RuntimeException("Cidadão não encontrado"));
     }
-
-    public Cidadao login (String email, String senha){
-
-        Cidadao c = repository.findByEmail(email);
-
-        if(c == null || !c.getSenha().equals(senha)){
-            throw new RuntimeException("Email ou senha inválidos");
-        }
-        return c;
-    }
-
     public Cidadao atualizar(Long id, Cidadao cidadao){
         cidadao.setId(id);
         return repository.save(cidadao);
