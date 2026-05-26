@@ -1,20 +1,18 @@
 package com.example.PI.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
-
-@Entity
+@Document(collection = "prefeituras")
 
 public class Prefeitura {
-    
-    
+
+
     @Id
     private String id;
     private String login;
     private String senha;
-    
+
     public Prefeitura(){
         this.login ="LoginAdmin";
         this.senha = "Admin123";

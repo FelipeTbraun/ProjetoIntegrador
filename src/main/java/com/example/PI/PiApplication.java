@@ -11,3 +11,5 @@ public class PiApplication {
 	}
 
 }
+
+// Testar se o Postgree funciona:./mvnw spring-boot:run

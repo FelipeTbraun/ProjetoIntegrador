@@ -21,7 +21,7 @@ import com.example.PI.service.CidadaoService;
 @RestController
 @RequestMapping("/cidadao")
 public class CidadaoController {
-    
+
     @Autowired
     private CidadaoService service;
 
@@ -31,26 +31,26 @@ public class CidadaoController {
         return service.cadastrar(cidadao);
     }
 
-  
-    
+
+
     //listar todos
     @GetMapping
    public List<Cidadao> listar(){
     return service.Listar();
    }
-    
+
    @GetMapping("/{id}")
-   public Cidadao buscar(@PathVariable Long id){
+   public Cidadao buscar(@PathVariable String id){
     return service.buscarPorId(id);
    }
-   
+
    @PutMapping("/{id}")
-   public Cidadao atualizar(@PathVariable Long id, @RequestBody Cidadao cidadao){
+   public Cidadao atualizar(@PathVariable String id, @RequestBody Cidadao cidadao){
     return service.atualizar(id, cidadao);
    }
-   
+
    @DeleteMapping("/{id}")
-   public void deletar(@PathVariable Long id){
+   public void deletar(@PathVariable String id){
     service.deletar(id);
    }
 

@@ -27,20 +27,20 @@ public class CidadaoService {
     public List<Cidadao> Listar(){
         return repository.findAll();
     }
-    public Cidadao buscarPorId(Long id){
+    public Cidadao buscarPorId(String id){
         return repository.findById(id)
             .orElseThrow(() -> new RuntimeException("Cidadão não encontrado"));
     }
-    public Cidadao atualizar(Long id, Cidadao cidadao){
+    public Cidadao atualizar(String id, Cidadao cidadao){
         cidadao.setId(id);
         return repository.save(cidadao);
     }
 
-    public void deletar(Long id){
+    public void deletar(String id){
         if(!repository.existsById(id)){
             throw new RuntimeException("Cidadão não encontrado");
         }
         repository.deleteById(id);
     }
-    
+
 }

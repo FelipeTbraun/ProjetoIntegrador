@@ -1,30 +1,50 @@
 package com.example.PI.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "formularios")
 public class Formulario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Enumerated(EnumType.STRING)
+    @Id
+    private String id;
+
     private Categoria categoria;
 
-    @Enumerated(EnumType.STRING)
     private TipoSolicitacao motivo;
 
     private String endereco;
     private String dataOcorrido;
     private String anexo;
     private String status;
+
+    private Cidadao cidadao;
+
+    public Formulario() {}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public TipoSolicitacao getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(TipoSolicitacao motivo) {
+        this.motivo = motivo;
+    }
 
     public String getEndereco() {
         return endereco;
@@ -58,9 +78,11 @@ public class Formulario {
         this.status = status;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "cidadao_id")
-    private Cidadao cidadao;
+    public Cidadao getCidadao() {
+        return cidadao;
+    }
 
-    public Formulario() {}
+    public void setCidadao(Cidadao cidadao) {
+        this.cidadao = cidadao;
+    }
 }

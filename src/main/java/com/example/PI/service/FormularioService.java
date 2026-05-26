@@ -22,7 +22,14 @@ public class FormularioService {
         return repository.findAll();
     }
 
-    public Formulario buscarPorId( Long id){
+    public Formulario buscarPorId(String id){
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Formulario não encontrado"));
+    }
+
+    public void deletar(String id){
+        if(!repository.existsById(id)){
+            throw new RuntimeException("Formulário não encontrado");
+        }
+       repository.deleteById(id);
     }
 }
