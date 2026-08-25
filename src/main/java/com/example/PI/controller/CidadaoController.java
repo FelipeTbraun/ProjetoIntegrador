@@ -3,6 +3,8 @@ package com.example.PI.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,11 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.PI.dto.Login;
 import com.example.PI.model.Cidadao;
 import com.example.PI.service.CidadaoService;
 
 
-
+@CrossOrigin(origins = "*")
 
 @RestController
 @RequestMapping("/cidadao")
@@ -29,6 +32,17 @@ public class CidadaoController {
     @PostMapping("/cadastro")
     public Cidadao cadastrar(@RequestBody Cidadao cidadao){
         return service.cadastrar(cidadao);
+    }
+
+    //Login do cidadão
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Login request){
+        try {
+            Cidadao cidadao = service.login(request.getLogin(), request.getSenha());
+            return ResponseEntity.ok(cidadao);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 

@@ -43,4 +43,15 @@ public class CidadaoService {
         repository.deleteById(id);
     }
 
+    public Cidadao login(String email, String senha){
+        Cidadao cidadao = repository.findByEmail(email);
+
+        if(cidadao == null || !cidadao.getSenha().equals(senha)){
+            throw new RuntimeException("Email ou senha incorretos");
+        }
+
+        cidadao.setSenha(null);
+        return cidadao;
+    }
+
 }

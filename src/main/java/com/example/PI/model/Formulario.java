@@ -15,8 +15,10 @@ public class Formulario {
 
     private String endereco;
     private String dataOcorrido;
+    private String descricao;
     private String anexo;
-    private String status;
+    private StatusFormulario status;
+    private String resposta;
 
     private Cidadao cidadao;
 
@@ -62,6 +64,14 @@ public class Formulario {
         this.dataOcorrido = dataOcorrido;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public String getAnexo() {
         return anexo;
     }
@@ -70,12 +80,20 @@ public class Formulario {
         this.anexo = anexo;
     }
 
-    public String getStatus() {
+    public StatusFormulario getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusFormulario status) {
         this.status = status;
+    }
+
+    public String getResposta() {
+        return resposta;
+    }
+
+    public void setResposta(String resposta) {
+        this.resposta = resposta;
     }
 
     public Cidadao getCidadao() {
