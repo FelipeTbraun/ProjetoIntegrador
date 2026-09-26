@@ -138,6 +138,30 @@
 
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.6.0</version>
+
+				<configuration>
+					<configLocation>${project.basedir}/checkstyle.xml</configLocation>
+
+					<logViolationsToConsole>true</logViolationsToConsole>
+
+					<failOnViolation>false</failOnViolation>
+					<failsOnError>false</failsOnError>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>checkstyle</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
 		</plugins>
 	</build>
